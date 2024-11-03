@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cultural Intelligence Platform Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        flowchart TB
+          subgraph User["User Interface Layer"]
+              Web["Web Application"]
+              Mobile["Mobile App"]
+              API["API Gateway"]
+          end
+      
+          subgraph Core["Core Services"]
+              direction TB
+              Auth["Authentication Service"]
+              CAS["Cultural Analysis Service"]
+              LCS["Localization Service"]
+              CMS["Content Management Service"]
+          end
+      
+          subgraph AI["AI/ML Layer"]
+              NLP["NLP Engine"]
+              MT["Machine Translation"]
+              SA["Sentiment Analyzer"]
+              CR["Cultural Rules Engine"]
+          end
+      
+          subgraph Data["Data Layer"]
+              CD[(Cultural Database)]
+              UD[(User Database)]
+              KD[(Knowledge Base)]
+          end
+      
+          subgraph External["External Services"]
+              TS["Translation APIs"]
+              NS["News Services"]
+              SS["Social Media APIs"]
+          end
+      
+          Web --> API
+          Mobile --> API
+          API --> Auth
+          Auth --> CAS
+          Auth --> LCS
+          Auth --> CMS
+          
+          CAS --> NLP
+          CAS --> SA
+          CAS --> CR
+          LCS --> MT
+          
+          NLP --> CD
+          MT --> CD
+          SA --> CD
+          CR --> CD
+          
+          CAS --> External
+          LCS --> External
+          
+          CD --> KD
+          UD --> KD
+    </pre>
+  </body>
+</html>
