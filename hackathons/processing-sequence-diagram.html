@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Processing Sequence Diagram</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        sequenceDiagram
+            participant U as User
+            participant G as API Gateway
+            participant I as Ingestion Service
+            participant M as Media Service
+            participant T as Text Service
+            participant L as Listing Service
+            participant Q as QA Service
+            participant A as Amazon API
+
+            U->>G: Upload content
+            G->>I: Process request
+            I->>M: Process media
+            I->>T: Analyze text
+            M-->>L: Send media features
+            T-->>L: Send text features
+            L->>Q: Generate listing
+            Q->>A: Submit listing
+            A->>Q: Confirm creation
+            Q->>U: Send notification
+    </pre>
+  </body>
+</html>

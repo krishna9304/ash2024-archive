@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microservices Architecture Diagram</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+      graph TB
+        subgraph Frontend["Frontend Layer"]
+            UI[Angular Dashboard]
+            WS[WebSocket Server]
+        end
+    
+        subgraph Gateway["API Gateway"]
+            APIGateway[Kong API Gateway]
+            Auth[Authentication]
+        end
+    
+        subgraph Services["Core Services"]
+            Ingestion[Content Ingestion]
+            Media[Media Processing]
+            Text[Text Analysis]
+            Listing[Listing Generation]
+            QA[Quality Assurance]
+        end
+    
+        subgraph MessageBus["Message Bus"]
+            Kafka[Apache Kafka]
+            RabbitMQ[RabbitMQ]
+        end
+    
+        subgraph Storage["Data Layer"]
+            Mongo[(MongoDB)]
+            Postgres[(PostgreSQL)]
+            Redis[(Redis Cache)]
+        end
+    
+        UI --> APIGateway
+        APIGateway --> Auth
+        Auth --> Ingestion
+        Ingestion --> Kafka
+        Kafka --> Media
+        Kafka --> Text
+        Media --> RabbitMQ
+        Text --> RabbitMQ
+        RabbitMQ --> Listing
+        Listing --> QA
+        QA --> WS
+    
+        Ingestion -.-> Mongo
+        Media -.-> Mongo
+        Text -.-> Postgres
+        Listing -.-> Postgres
+        QA -.-> Redis
+    
+        style Frontend fill:#f9f,stroke:#333,stroke-width:2px
+        style Gateway fill:#bbf,stroke:#333,stroke-width:2px
+        style Services fill:#bfb,stroke:#333,stroke-width:2px
+        style MessageBus fill:#fbb,stroke:#333,stroke-width:2px
+        style Storage fill:#fff,stroke:#333,stroke-width:2px
+    </pre>
+  </body>
+</html>
