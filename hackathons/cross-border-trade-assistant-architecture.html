@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cross-Border Trade Assistant - Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        graph TB
+          subgraph "User Interface"
+              A[Web Dashboard]
+              B[Mobile App]
+              C[Admin Portal]
+          end
+      
+          subgraph "API Gateway"
+              D[GraphQL API]
+              E[REST Endpoints]
+          end
+      
+          subgraph "Core Services"
+              F[Trade Engine]
+              G[Route Optimizer]
+              H[Document Processor]
+          end
+      
+          subgraph "AI Services"
+              I[Prediction Engine]
+              J[Risk Analyzer]
+              K[Cost Calculator]
+          end
+      
+          subgraph "External Integration"
+              L[Customs APIs]
+              M[Carrier Systems]
+              N[Payment Gateway]
+          end
+      
+          A --> D
+          B --> D
+          C --> E
+          D --> F
+          E --> F
+          F --> G
+          F --> H
+          G --> I
+          H --> J
+          F --> K
+          G --> L
+          H --> M
+          K --> N
+      
+          classDef primary fill:#f9f,stroke:#333,stroke-width:2px
+          classDef secondary fill:#bbf,stroke:#333,stroke-width:2px
+          classDef tertiary fill:#bfb,stroke:#333,stroke-width:2px
+      
+          class A,B,C primary
+          class D,E,F secondary
+          class G,H,I,J,K,L,M,N tertiary
+    </pre>
+  </body>
+</html>
