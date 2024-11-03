@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLP-Centric Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        graph TB
+            subgraph Frontend["Frontend Layer"]
+                UI[Vue.js Dashboard]
+                Preview[Real-time Preview]
+                Editor[Content Editor]
+            end
+
+            subgraph NLP["NLP Processing Layer"]
+                direction TB
+                InputProcessor[Content Processor]
+                BERT[BERT Model]
+                EntityExtractor[Entity Extractor]
+                ContentGenerator[Content Generator]
+            end
+
+            subgraph Database["Database Layer"]
+                Mongo[(MongoDB)]
+                Redis[(Redis Cache)]
+                ES[(Elasticsearch)]
+            end
+
+            subgraph QA["Quality Assurance"]
+                Validator[Content Validator]
+                Rules[Rules Engine]
+                SEO[SEO Optimizer]
+            end
+
+            UI --> InputProcessor
+            InputProcessor --> BERT
+            BERT --> EntityExtractor
+            EntityExtractor --> ContentGenerator
+            ContentGenerator --> Validator
+            Validator --> Rules
+            Rules --> SEO
+            SEO --> Preview
+            
+            ContentGenerator -.-> Mongo
+            EntityExtractor -.-> Redis
+            SEO -.-> ES
+
+            style Frontend fill:#f9f,stroke:#333,stroke-width:2px
+            style NLP fill:#bbf,stroke:#333,stroke-width:2px
+            style Database fill:#bfb,stroke:#333,stroke-width:2px
+            style QA fill:#fbb,stroke:#333,stroke-width:2px
+    </pre>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLP Processing Workflow</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        sequenceDiagram
+            participant U as User
+            participant F as Frontend
+            participant NLP as NLP Engine
+            participant DB as Database
+            participant QA as Quality Assurance
+            participant A as Amazon API
+
+            U->>F: Upload social media content
+            F->>NLP: Process text content
+            NLP->>NLP: Extract entities & attributes
+            NLP->>DB: Store extracted data
+            NLP->>QA: Validate content
+            QA->>QA: Check compliance
+            QA->>QA: Optimize SEO
+            QA->>F: Send preview
+            F->>U: Show preview
+            U->>F: Approve listing
+            F->>A: Submit listing
+            A->>DB: Store listing data
+            DB->>F: Update status
+            F->>U: Show success
+    </pre>
+  </body>
+</html>
