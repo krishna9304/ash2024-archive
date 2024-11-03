@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regulatory Knowledge Graph - Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        graph TB
+          subgraph "Frontend"
+              A[Graph Visualization]
+              B[Query Interface]
+              C[Dashboard]
+          end
+      
+          subgraph "API Layer"
+              D[GraphQL API]
+              E[REST API]
+          end
+      
+          subgraph "Core Services"
+              F[Graph Engine]
+              G[Analytics Service]
+              H[ML Pipeline]
+          end
+      
+          subgraph "Data Layer"
+              I[Neo4j Database]
+              J[Document Store]
+              K[Event Store]
+          end
+      
+          subgraph "External Sources"
+              L[Regulatory Feeds]
+              M[Government APIs]
+          end
+      
+          A --> D
+          B --> D
+          C --> E
+          D --> F
+          E --> F
+          F --> G
+          F --> H
+          G --> I
+          H --> I
+          F --> J
+          G --> K
+          L --> F
+          M --> F
+      
+          classDef primary fill:#f9f,stroke:#333,stroke-width:2px
+          classDef secondary fill:#bbf,stroke:#333,stroke-width:2px
+          classDef tertiary fill:#bfb,stroke:#333,stroke-width:2px
+      
+          class A,B,C primary
+          class D,E,F secondary
+          class G,H,I,J,K,L,M tertiary
+    </pre>
+  </body>
+</html>
