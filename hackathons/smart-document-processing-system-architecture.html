@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Document Processing System - Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        graph TB
+          subgraph "User Interface"
+              A[Web Portal]
+              B[Mobile App]
+          end
+      
+          subgraph "Document Processing"
+              C[Upload Service]
+              D[OCR Engine]
+              E[Document Classifier]
+          end
+      
+          subgraph "AI Processing"
+              F[NLP Service]
+              G[Translation Engine]
+              H[Validation Service]
+          end
+      
+          subgraph "Storage"
+              I[Document Store]
+              J[Process Cache]
+          end
+      
+          subgraph "Analytics"
+              K[Reports Engine]
+              L[Insights Generator]
+          end
+      
+          A --> C
+          B --> C
+          C --> D
+          D --> E
+          E --> F
+          F --> G
+          G --> H
+          D --> I
+          E --> I
+          F --> J
+          H --> K
+          K --> L
+      
+          classDef primary fill:#f9f,stroke:#333,stroke-width:2px
+          classDef secondary fill:#bbf,stroke:#333,stroke-width:2px
+          classDef tertiary fill:#bfb,stroke:#333,stroke-width:2px
+      
+          class A,B primary
+          class C,D,E secondary
+          class F,G,H,I,J,K,L tertiary
+    </pre>
+  </body>
+</html>
