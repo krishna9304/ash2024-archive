@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computer Vision Pipeline Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+      flowchart TB
+          subgraph Frontend["Frontend Layer"]
+              UI[React Dashboard]
+              Preview[Preview Component]
+              Upload[Upload Handler]
+          end
+
+          subgraph Processing["Processing Layer"]
+              direction TB
+              Lambda[AWS Lambda]
+              CV[Computer Vision Module]
+              OCR[OCR Engine]
+              NLP[NLP Processor]
+          end
+
+          subgraph Storage["Storage Layer"]
+              S3[AWS S3]
+              DynamoDB[DynamoDB]
+          end
+
+          subgraph Integration["Integration Layer"]
+              API[Amazon Seller API]
+              Valid[Validation Service]
+          end
+
+          Upload --> S3
+          S3 --> Lambda
+          Lambda --> CV
+          CV --> OCR
+          OCR --> NLP
+          NLP --> DynamoDB
+          DynamoDB --> Valid
+          Valid --> API
+          API --> Preview
+          
+          style Frontend fill:#f9f,stroke:#333,stroke-width:2px
+          style Processing fill:#bbf,stroke:#333,stroke-width:2px
+          style Storage fill:#bfb,stroke:#333,stroke-width:2px
+          style Integration fill:#fbb,stroke:#333,stroke-width:2px
+    </pre>
+  </body>
+</html>
