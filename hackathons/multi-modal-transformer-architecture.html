@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Modal Transformer Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        graph TB
+            subgraph Frontend["Frontend Layer"]
+                UI[Next.js Dashboard]
+                Preview[Multi-Modal Preview]
+                Editor[Content Editor]
+            end
+
+            subgraph Transformer["Transformer Layer"]
+                direction TB
+                ImageTransformer[Vision Transformer]
+                TextTransformer[Text Transformer]
+                CrossAttention[Cross-Attention]
+                FeatureFusion[Feature Fusion]
+            end
+
+            subgraph Processing["Processing Layer"]
+                CLIP[CLIP Model]
+                Generator[Content Generator]
+                Validator[Quality Validator]
+            end
+
+            subgraph Storage["Storage & Serving"]
+                CloudStorage[(Cloud Storage)]
+                ModelRegistry[(Model Registry)]
+                Analytics[(Analytics DB)]
+            end
+
+            UI --> CLIP
+            CLIP --> ImageTransformer
+            CLIP --> TextTransformer
+            ImageTransformer --> CrossAttention
+            TextTransformer --> CrossAttention
+            CrossAttention --> FeatureFusion
+            FeatureFusion --> Generator
+            Generator --> Validator
+            Validator --> Preview
+
+            style Frontend fill:#f9f,stroke:#333,stroke-width:2px
+            style Transformer fill:#bbf,stroke:#333,stroke-width:2px
+            style Processing fill:#bfb,stroke:#333,stroke-width:2px
+            style Storage fill:#fbb,stroke:#333,stroke-width:2px
+    </pre>
+  </body>
+</html>

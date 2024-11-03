@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NLP Processing Workflow</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        sequenceDiagram
+            participant U as User
+            participant F as Frontend
+            participant CLIP as CLIP Model
+            participant T as Transformer
+            participant G as Generator
+            participant A as Amazon API
+
+            U->>F: Upload content
+            F->>CLIP: Process content
+            CLIP->>T: Generate embeddings
+            T->>T: Cross-modal attention
+            T->>T: Feature fusion
+            T->>G: Generate listing
+            G->>F: Preview listing
+            F->>U: Show preview
+            U->>F: Approve listing
+            F->>A: Submit listing
+            A->>F: Confirm creation
+            F->>U: Show success
+    </pre>
+  </body>
+</html>
