@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NavigAItor - Simplified Architecture</title>
+  </head>
+  <script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+  ></script>
+  <body>
+    <pre class="mermaid">
+        graph TB
+          subgraph "Frontend Layer"
+              A[Web & Mobile Interface]
+          end
+      
+          subgraph "API Layer"
+              B[API Gateway & Auth]
+          end
+      
+          subgraph "Core Services"
+              C[Document Processor]
+              D[Compliance Engine]
+              E[AI/ML Services]
+          end
+      
+          subgraph "Data Layer"
+              F[Database & Storage]
+          end
+      
+          subgraph "External Systems"
+              G[Government & Trade APIs]
+          end
+      
+          A --> B
+          B --> C
+          B --> D
+          C --> E
+          D --> E
+          C --> F
+          D --> F
+          E --> F
+          D --> G
+      
+          classDef primary fill:#f9f,stroke:#333,stroke-width:2px
+          classDef secondary fill:#bbf,stroke:#333,stroke-width:2px
+          classDef tertiary fill:#bfb,stroke:#333,stroke-width:2px
+      
+          class A primary
+          class B,C,D secondary
+          class E,F,G tertiary
+    </pre>
+  </body>
+</html>
